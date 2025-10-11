@@ -1,4 +1,5 @@
-﻿const CONFIG = {
+// Есть более умные способы сделать это,но получилось как всегда
+const CONFIG = {
     showDetails: true,
     filterByModule: true, // remove export/import funcs
     maxHooksWTF: 5000,
@@ -235,5 +236,6 @@ functions.forEach((func, idx) => {
         console.log(`[-] Failed at func ${func.address}: ${e}`);
     }
 });
+
 
 console.log("=".repeat(80));
