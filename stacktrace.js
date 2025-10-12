@@ -10,6 +10,9 @@ const CONFIG = {
         'memcpy',
         'RtlCaptureContext'
     ],
+    excludeRVA: [
+        0x1000,
+    ],
     allowedModules: [
         //'detectstacktracetest.exe',
         'kernel32.dll',
@@ -187,6 +190,7 @@ functions.forEach((func, idx) => {
         if (hooked.has(addrStr)) return;
         if (shouldExclude(func.address)) return;
 
+        if (CONFIG.excludeRVA.includes(func.rva)) return;
         const rva = `0x${func.rva.toString(16)}`;
         const va = func.address.toString();
 
@@ -239,3 +243,4 @@ functions.forEach((func, idx) => {
 
 
 console.log("=".repeat(80));
+
